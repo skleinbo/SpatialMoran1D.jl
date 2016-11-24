@@ -1,5 +1,76 @@
+__precompile__()
 module SpatialMoran1D
 
-# package code goes here
+    export  TKomaP,
+            TKomaErfP,
+            ETotalKoma,
+            ETMRCAKoma,
+            ESegSitesKoma,
+            EPiKoma,
+            PSegSitesMoran,
+            ESegSitesMoran,
+            TMoran,
+            ETMoran,
+            PiMoran
+
+    using Distributions
+
+    TKomaP(k,n)   = n^3/pi * (1/(k-1)^2-1/k^2)*(1-1/k) + (1-2/pi)
+    TKomaP(k,n,m) = n^3/pi *(1/(k-m)^2-1/(k+1-m)^2)*((k-m)/(k-m+1))+(1-2/pi)
+    TKomaErfP(k,n,C0::Real=1.) = 1/4/C0^2*(1/erfinv((k-1)/n)^2-1/erfinv(k/n)^2)*(1-1/k)*n
+    ETotalKoma(n) = sum( k->TKomaP(k,n)*k, 2:n )
+    ETMRCAKoma(n) = sum( k->TKomaP(k,n), 2:n )
+    ESegSitesKoma(n, μ) = μ*ETotalKoma(n)
+    EPiKoma(n, μ) = μ/12*n^2*(n+1)
+
+    """
+        PSegSitesMoran(k, n, θ)
+
+    Probability Mass Function of the number of segregating sites under Moran.
+    # Arguments
+    * `n`: Population size
+    * `θ`: Mutation rate
+    """
+    PSegSitesMoran(k, n, θ) = sum( i->(-1)^i*binomial(n-1,i-1)*(i-1)/(θ+i-1)*(θ/(θ+i-1))^k, 2:n)
+
+    """
+        ESegSitesMoran(n, μ)
+
+    Expected number of segregrating sites under Moran.
+    # Arguments
+    * `n`: Population size
+    * `θ`: Mutation rate
+    """
+    ESegSitesMoran(n, μ) = n*μ*sum( i->1/i, 1:n-1)
+
+    """
+        TMoran(t, k, n)
+
+    Distribution of coalescence times according to Kingman. Moran-timescale `2/n^2`
+    # Arguments
+    * `k`: Lineages present
+    * `n`: Population size
+    """
+    TMoran(t, k, n) = pdf( Exponential(binomial(k,2)), t/n^2*2)
+
+    """
+        ETMoran(k, n) = n^2/2 / binomial(k,2)
+
+    Expected value for the kth coalescence time under Moran.
+    # Arguments
+    * `k`: Lineages present
+    * `n`: Population size
+    """
+    ETMoran(k, n) = n^2/2 / binomial(k,2)
+
+    """
+        PiMoran(n, θ)
+
+    Expected number of pairwise differences under Moran.
+    # Arguments
+    * `θ`: Mutation rate
+    * `n`: Population size
+    """
+    PiMoran(n, θ) = n*θ
 
 end # module
