@@ -1,8 +1,8 @@
 __precompile__()
 module SpatialMoran1D
 
-    export  TKomaP,
-            TKomaErfP,
+    export  ETKomaP,
+            ETKomaErfP,
             ETotalKoma,
             ETMRCAKoma,
             ESegSitesKoma,
@@ -23,7 +23,7 @@ module SpatialMoran1D
     * `k`: Lineages present
     * `n`: Population size
     """
-    TKomaP(k, n)   = n^3/pi * (1/(k-1)^2-1/k^2)*(1-1/k) + (1-2/pi)
+    ETKomaP(k, n)   = n^3/pi * (1/(k-1)^2-1/k^2)*(1-1/k) + (1-2/pi)
     """
         ETKomaP(k, n, m)
 
@@ -33,7 +33,7 @@ module SpatialMoran1D
     * `n`: Population size
     * `m`: Tweak parameter
     """
-    TKomaP(k, n, m) = n^3/pi *(1/(k-m)^2-1/(k+1-m)^2)*((k-m)/(k-m+1))+(1-2/pi)
+    ETKomaP(k, n, m) = n^3/pi *(1/(k-m)^2-1/(k+1-m)^2)*((k-m)/(k-m+1))+(1-2/pi)
     """
         ETKomaErfP(k, n, C0::Real=1.)
 
