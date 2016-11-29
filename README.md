@@ -5,3 +5,5 @@
 [![Coverage Status](https://coveralls.io/repos/skleinbo/SpatialMoran1D.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/skleinbo/SpatialMoran1D.jl?branch=master)
 
 [![codecov.io](http://codecov.io/github/skleinbo/SpatialMoran1D.jl/coverage.svg?branch=master)](http://codecov.io/github/skleinbo/SpatialMoran1D.jl?branch=master)
+
+Collection of methods to calculate quantities in population genetical models with Moran and spatially restricted Moran dynamics.
