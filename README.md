@@ -6,4 +6,4 @@
 
 [![codecov.io](http://codecov.io/github/skleinbo/SpatialMoran1D.jl/coverage.svg?branch=master)](http://codecov.io/github/skleinbo/SpatialMoran1D.jl?branch=master)
 
-Collection of methods to calculate quantities in population genetical models with Moran and spatially restricted Moran dynamics.
+Collection of methods to calculate quantities in population genetical models under well-mixed Moran and spatially restricted Moran dynamics.
