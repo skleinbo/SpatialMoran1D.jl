@@ -1,4 +1,3 @@
-__precompile__()
 module SpatialMoran1D
 
     export  ETKomaP,
@@ -52,7 +51,7 @@ module SpatialMoran1D
     # Arguments
     * `n`: Population size
     """
-    ETotalKoma(n) = sum( k->TKomaP(k,n)*k, 2:n )
+    ETotalKoma(n) = sum( k->ETKomaP(k,n)*k, 2:n )
     """
         ETMRCAKoma(n)
 
@@ -60,7 +59,7 @@ module SpatialMoran1D
     # Arguments
     * `n`: Population size
     """
-    ETMRCAKoma(n) = sum( k->TKomaP(k,n), 2:n )
+    ETMRCAKoma(n) = sum( k->ETKomaP(k,n), 2:n )
     """
         ESegSitesKoma(n, μ)
 

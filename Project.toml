@@ -1,0 +1,6 @@
+name = "SpatialMoran1D"
+uuid = "776f19e2-40a7-52e4-b093-a6ffd7e9c826"
+version = "0.2.0"
+
+[deps]
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
